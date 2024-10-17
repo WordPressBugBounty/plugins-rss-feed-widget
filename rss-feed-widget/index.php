@@ -3,7 +3,7 @@
 Plugin Name: RSS Feed Widget	
 Plugin URI: http://androidbubble.com/blog/wordpress/widgets/rss-feed-widget	
 Description: RSS Feed Widget with highly customizable slider. Feed title, description, image, cache and many other things which you can control.	
-Version: 2.9.9
+Version: 3.0.0
 Author: Fahad Mahmood 	
 Author URI: https://www.androidbubbles.com	
 Text Domain: rss-feed-widget

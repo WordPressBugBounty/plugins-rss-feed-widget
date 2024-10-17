@@ -1264,9 +1264,24 @@ if(!function_exists('rfw_init')){
 				   exit;
 				
 				} else {
-				
-				   update_option('rfw_sc_ids', sanitize_textarea_field($_POST['rfw_sc_ids']));
-				   update_option('rfw_sc_google_api_key', sanitize_rsfw_data($_POST['rfw_sc_google_api_key']));
+					$rfw_sc_ids = sanitize_textarea_field($_POST['rfw_sc_ids']);
+					/*$rfw_sc_id_arr = nl2br($rfw_sc_ids);
+					$rfw_sc_id_arr = explode('<br />', $rfw_sc_id_arr);
+					$rfw_sc_id_arr = array_map('sanitize_key', $rfw_sc_id_arr);
+					
+					$rfw_sc_ids = implode('-newline-', $rfw_sc_id_arr);
+					
+					//pree($rfw_sc_ids);
+					//exit;
+					
+					$rfw_sc_ids = sanitize_key($rfw_sc_ids);
+					
+					$rfw_sc_ids = str_replace('-newline-', '\r\n', $rfw_sc_ids);*/
+					
+					//pree($rfw_sc_ids);exit;
+					
+					update_option('rfw_sc_ids', $rfw_sc_ids);
+					update_option('rfw_sc_google_api_key', sanitize_rsfw_data($_POST['rfw_sc_google_api_key']));
 				   
 				}	
 			}	
@@ -1401,6 +1416,10 @@ if(!function_exists('rfw_init')){
 		return $str;
 	}
 	
+	function rfw_youtube_valid_id($id) {
+		return preg_match('/^[a-zA-Z0-9_-]{11}$/', $id) > 0;
+	}
+	
 	add_shortcode( 'rfw-youtube-videos', 'rfw_youtube_videos' );
 	function rfw_youtube_videos( $atts ) {
 		
@@ -1457,6 +1476,8 @@ if(!function_exists('rfw_init')){
 			
 			$styles = array();
 			
+			$atts = array_map('esc_attr', $atts);
+			
 			$styles['wrapper'][] = 'style="';
 			$styles['wrapper'][] = (isset($atts['bgcolor'])?'background-color:'.$atts['bgcolor'].';':'');
 			$styles['wrapper'][] = '"';
@@ -1471,7 +1492,13 @@ if(!function_exists('rfw_init')){
 				//pree($rfw_sc_arr);exit;
 				$ret[] = '<div class="rfw-yt-items" '.implode('', $styles['wrapper']).'>';
 				foreach($rfw_sc_arr as $sc_item){
-					$ret[] = '<iframe '.implode('', $styles['inner']).' src="https://www.youtube.com/embed/'.$sc_item.'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+					$valid_id = false;
+					if(rfw_youtube_valid_id($sc_item) && !is_numeric($sc_item)){
+						$valid_id = true;
+					}
+					if($valid_id){
+						$ret[] = '<iframe '.implode('', $styles['inner']).' src="https://www.youtube.com/embed/'.esc_attr($sc_item).'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+					}
 				}
 				$ret[] = '</div>';
 			}
