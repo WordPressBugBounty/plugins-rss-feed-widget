@@ -1012,7 +1012,7 @@ class rfw_dock extends WP_Widget {
         
         <div class="rwf-required">        
         <strong><?php _e('Required'); ?></strong>
-        <p class="rss_url_area"><label for="<?php echo $this->get_field_id( 'rss_url' ); ?>"><?php echo __('Enter the RSS feed URL or Facebook Page ID here:', 'rss-feed-widget').' <a title="'.__('Click here for examples', 'rss-feed-widget').'" target="_blank" href="http://www.tutorsloop.net/app/live.php?id=4330772">('.__("What's this?", 'rss-feed-widget').')</a>&nbsp;|&nbsp;<a target="_blank" href="https://plugins.svn.wordpress.org/rss-feed-widget/assets/styling-guide.pdf" title="'.__('Click here for styling guide', 'rss-feed-widget').'">'.__('Styling', 'rss-feed-widget').'</a>&nbsp;|&nbsp;<a target="_blank" href="https://plugins.svn.wordpress.org/rss-feed-widget/assets/basic-guide.pdf" title="'.__('Click here for guide', 'rss-feed-widget').'">'.__('Help', 'rss-feed-widget').'</a>'.($rfw_pro?'':'&nbsp;|&nbsp;<a target="_blank" href="'.esc_url($rfw_premium_link).'" title="'.__('Go Premium', 'rss-feed-widget').'">'.__('Multiple Feed URLs?', 'rss-feed-widget').'</a>'); ?></label>
+        <p class="rss_url_area"><label for="<?php echo esc_attr($this->get_field_id( 'rss_url' )); ?>"><?php echo __('Enter the RSS feed URL or Facebook Page ID here:', 'rss-feed-widget').' <a title="'.__('Click here for examples', 'rss-feed-widget').'" target="_blank" href="http://www.tutorsloop.net/app/live.php?id=4330772">('.__("What's this?", 'rss-feed-widget').')</a>&nbsp;|&nbsp;<a target="_blank" href="https://plugins.svn.wordpress.org/rss-feed-widget/assets/styling-guide.pdf" title="'.__('Click here for styling guide', 'rss-feed-widget').'">'.__('Styling', 'rss-feed-widget').'</a>&nbsp;|&nbsp;<a target="_blank" href="https://plugins.svn.wordpress.org/rss-feed-widget/assets/basic-guide.pdf" title="'.__('Click here for guide', 'rss-feed-widget').'">'.__('Help', 'rss-feed-widget').'</a>'.($rfw_pro?'':'&nbsp;|&nbsp;<a target="_blank" href="'.esc_url($rfw_premium_link).'" title="'.__('Go Premium', 'rss-feed-widget').'">'.__('Multiple Feed URLs?', 'rss-feed-widget').'</a>'); ?></label>
         
 <?php if($rfw_pro){ ?>
 <a class="rfw_add_more"><?php _e('Add More', 'rss-feed-widget'); ?></a>
@@ -1021,12 +1021,12 @@ class rfw_dock extends WP_Widget {
 
 <?php if(is_array($rss_url) && !empty($rss_url)){ ?>
 <?php foreach($rss_url as $rss_link){ ?>
-	<input placeholder="Facebook Page ID or RSS Feed URL here..." class="widefat" id="<?php echo $this->get_field_id( 'rss_url' ); ?>" name="<?php echo $this->get_field_name( 'rss_url' ).($rfw_pro?'[]':''); ?>" type="text" value="<?php echo esc_attr( $rss_link ); ?>" />
+	<input placeholder="Facebook Page ID or RSS Feed URL here..." class="widefat" id="<?php echo esc_attr($this->get_field_id( 'rss_url' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'rss_url' )).($rfw_pro?'[]':''); ?>" type="text" value="<?php echo esc_attr( $rss_link ); ?>" />
 <?php } ?>
 <?php }else{ //pree($this->get_field_id( 'rss_url' )); 
 //pree($rss_url);
 ?>
-	<input placeholder="Facebook Page ID or RSS Feed URL here..." class="widefat" id="<?php echo $this->get_field_id( 'rss_url' ); ?>" name="<?php echo $this->get_field_name( 'rss_url' ).($rfw_pro?'[]':''); ?>" type="text" value="<?php echo (is_array($rss_url)?esc_html(current($rss_url)):esc_html( $rss_url )); ?>" />
+	<input placeholder="Facebook Page ID or RSS Feed URL here..." class="widefat" id="<?php echo esc_attr($this->get_field_id( 'rss_url' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'rss_url' )).($rfw_pro?'[]':''); ?>" type="text" value="<?php echo (is_array($rss_url)?esc_url(current($rss_url)):esc_url( $rss_url )); ?>" />
 <?php } ?>
     	<?php
 		$url = 'plugin-install.php?tab=search&s=chameleon';
@@ -1047,12 +1047,12 @@ class rfw_dock extends WP_Widget {
         
         <strong><?php _e('Optional', 'rss-feed-widget'); ?></strong> 
   		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title (optional):', 'rss-feed-widget' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		<label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php _e( 'Title (optional):', 'rss-feed-widget' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 
-		<p><label for="<?php echo $this->get_field_id( 'content_display' ); ?>"><?php _e( 'Display type:', 'rss-feed-widget' ); ?></label>
-        <select id="<?php echo $this->get_field_id( 'content_display' ); ?>" name="<?php echo $this->get_field_name( 'content_display' ); ?>">
+		<p><label for="<?php echo esc_attr($this->get_field_id( 'content_display' )); ?>"><?php _e( 'Display type:', 'rss-feed-widget' ); ?></label>
+        <select id="<?php echo esc_attr($this->get_field_id( 'content_display' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'content_display' )); ?>">
         	<option value="default" <?php echo $content_display=='default'?'selected="selected"':''; ?>><?php _e('Default', 'rss-feed-widget'); ?></option>
             <option value="title_only" <?php echo $content_display=='title_only'?'selected="selected"':''; ?>><?php _e('Title Only', 'rss-feed-widget'); ?></option>
             <option value="text_only" <?php echo $content_display=='text_only'?'selected="selected"':''; ?>><?php _e('Text Only', 'rss-feed-widget'); ?></option>
@@ -1060,30 +1060,30 @@ class rfw_dock extends WP_Widget {
         </select></p>
         
         <p>
-            <label for="<?php echo $this->get_field_id( 'text_to_display' ); ?>"><?php _e( 'Use Text From:', 'rss-feed-widget' ); ?></label>
-            <select id="<?php echo $this->get_field_id( 'text_to_display' ); ?>" name="<?php echo $this->get_field_name( 'text_to_display' ); ?>">
+            <label for="<?php echo esc_attr($this->get_field_id( 'text_to_display' )); ?>"><?php _e( 'Use Text From:', 'rss-feed-widget' ); ?></label>
+            <select id="<?php echo esc_attr($this->get_field_id( 'text_to_display' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'text_to_display' )); ?>">
                 <option value="default" <?php echo $text_to_display=='default'?'selected="selected"':''; ?>><?php _e('Default', 'rss-feed-widget'); ?></option>
                 <option value="content" <?php echo $text_to_display=='content'?'selected="selected"':''; ?>><?php _e('Content', 'rss-feed-widget'); ?></option>
                 <option value="description" <?php echo $text_to_display=='description'?'selected="selected"':''; ?>><?php _e('Description', 'rss-feed-widget'); ?></option>
             </select>
         </p>
                 
-		<p><label for="<?php echo $this->get_field_id( 'show_feed_title' ); ?>"><?php _e( 'Display feed title (Yes/No):', 'rss-feed-widget' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'show_feed_title' ); ?>" name="<?php echo $this->get_field_name( 'show_feed_title' ); ?>" type="checkbox" value="true" <?php echo $show_feed_title?'checked="checked"':''; ?>  /></p>
+		<p><label for="<?php echo esc_attr($this->get_field_id( 'show_feed_title' )); ?>"><?php _e( 'Display feed title (Yes/No):', 'rss-feed-widget' ); ?></label>
+		<input id="<?php echo esc_attr($this->get_field_id( 'show_feed_title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_feed_title' )); ?>" type="checkbox" value="true" <?php echo $show_feed_title?'checked="checked"':''; ?>  /></p>
         
-        <p><label for="<?php echo $this->get_field_id( 'keep_feed_link' ); ?>"><?php _e( 'Keep feed link (Yes/No):', 'rss-feed-widget' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'keep_feed_link' ); ?>" name="<?php echo $this->get_field_name( 'keep_feed_link' ); ?>" type="checkbox" value="true" <?php echo $keep_feed_link?'checked="checked"':''; ?>  /></p>
+        <p><label for="<?php echo esc_attr($this->get_field_id( 'keep_feed_link' )); ?>"><?php _e( 'Keep feed link (Yes/No):', 'rss-feed-widget' ); ?></label>
+		<input id="<?php echo esc_attr($this->get_field_id( 'keep_feed_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'keep_feed_link' )); ?>" type="checkbox" value="true" <?php echo $keep_feed_link?'checked="checked"':''; ?>  /></p>
         
-        <p><label for="<?php echo $this->get_field_id( 'feed_words' ); ?>"><?php _e( 'No. of feed words to show:', 'rss-feed-widget' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'feed_words' ); ?>" name="<?php echo $this->get_field_name( 'feed_words' ); ?>" type="text" value="<?php echo sanitize_text_field($feed_words); ?>" size="3" /></p>
+        <p><label for="<?php echo esc_attr($this->get_field_id( 'feed_words' )); ?>"><?php _e( 'No. of feed words to show:', 'rss-feed-widget' ); ?></label>
+		<input id="<?php echo esc_attr($this->get_field_id( 'feed_words' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'feed_words' )); ?>" type="text" value="<?php echo esc_attr(sanitize_text_field($feed_words)); ?>" size="3" /></p>
         
-        <p><label for="<?php echo $this->get_field_id( 'content_height' ); ?>"><?php _e( 'Widget Height:', 'rss-feed-widget' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'content_height' ); ?>" name="<?php echo $this->get_field_name( 'content_height' ); ?>" type="text" value="<?php echo sanitize_text_field($content_height); ?>" size="6" /><small><br />
+        <p><label for="<?php echo esc_attr($this->get_field_id( 'content_height' )); ?>"><?php _e( 'Widget Height:', 'rss-feed-widget' ); ?></label>
+		<input id="<?php echo esc_attr($this->get_field_id( 'content_height' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'content_height' )); ?>" type="text" value="<?php echo esc_attr(sanitize_text_field($content_height)); ?>" size="6" /><small><br />
 e.g. 400px<br />
         <?php _e( 'Leave empty for auto.', 'rss-feed-widget' ); ?></small>
         </p>
-        <p><label for="<?php echo $this->get_field_id( 'content_order' ); ?>"><?php _e( 'Sort order:', 'rss-feed-widget' ); ?></label>
-        <select id="<?php echo $this->get_field_id( 'content_order' ); ?>" name="<?php echo $this->get_field_name( 'content_order' ); ?>">
+        <p><label for="<?php echo esc_attr($this->get_field_id( 'content_order' )); ?>"><?php _e( 'Sort order:', 'rss-feed-widget' ); ?></label>
+        <select id="<?php echo esc_attr($this->get_field_id( 'content_order' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'content_order' )); ?>">
         	<option value="default" <?php echo $content_order=='default'?'selected="selected"':''; ?>><?php _e('Default', 'rss-feed-widget'); ?></option>
             <option value="aa" <?php echo $content_order=='aa'?'selected="selected"':''; ?>><?php _e('Alphabetical Ascending', 'rss-feed-widget'); ?></option>
             <option value="ad" <?php echo $content_order=='ad'?'selected="selected"':''; ?>><?php _e('Alphabetical Descending', 'rss-feed-widget'); ?></option>
@@ -1092,26 +1092,26 @@ e.g. 400px<br />
             <option value="rand" <?php echo $content_order=='rand'?'selected="selected"':''; ?>><?php _e('Random', 'rss-feed-widget'); ?></option>
         </select></p>
         
-        <p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of feeds to show:', 'rss-feed-widget' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo sanitize_text_field($number); ?>" size="3" /></p>
+        <p><label for="<?php echo esc_attr($this->get_field_id( 'number' )); ?>"><?php _e( 'Number of feeds to show:', 'rss-feed-widget' ); ?></label>
+		<input id="<?php echo esc_attr($this->get_field_id( 'number' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'number' )); ?>" type="text" value="<?php echo esc_attr(sanitize_text_field($number)); ?>" size="3" /></p>
         
 		</div>
         
         
         <div class="rwf-advance rwf-collapsed">
         <strong><?php _e('Advanced', 'rss-feed-widget'); ?></strong>
-        <p><label for="<?php echo $this->get_field_id( 'speed' ); ?>"><?php _e( 'Transition Speed:', 'rss-feed-widget' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'speed' ); ?>" name="<?php echo $this->get_field_name( 'speed' ); ?>" type="text" value="<?php echo sanitize_text_field($speed); ?>" size="4" /></p>
+        <p><label for="<?php echo esc_attr($this->get_field_id( 'speed' )); ?>"><?php _e( 'Transition Speed:', 'rss-feed-widget' ); ?></label>
+		<input id="<?php echo esc_attr($this->get_field_id( 'speed' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'speed' )); ?>" type="text" value="<?php echo esc_attr(sanitize_text_field($speed)); ?>" size="4" /></p>
         
-        <p><label for="<?php echo $this->get_field_id( 'list_type' ); ?>"><?php _e( 'List Type:', 'rss-feed-widget' ); ?></label>
-		 <select id="<?php echo $this->get_field_id( 'list_type' ); ?>" name="<?php echo $this->get_field_name( 'list_type' ); ?>">
+        <p><label for="<?php echo esc_attr($this->get_field_id( 'list_type' )); ?>"><?php _e( 'List Type:', 'rss-feed-widget' ); ?></label>
+		 <select id="<?php echo esc_attr($this->get_field_id( 'list_type' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'list_type' )); ?>">
         	<option value="slider" <?php echo $list_type=='slider'?'selected="selected"':''; ?>>Slider</option>
             <option value="list" <?php echo $list_type=='list'?'selected="selected"':''; ?>>List Only</option>
         </select>        
        </p>
         
-		<p><label for="<?php echo $this->get_field_id( 'img_size' ); ?>"><?php _e( 'Image Pick:', 'rss-feed-widget' ); ?></label>
-		 <select id="<?php echo $this->get_field_id( 'img_size' ); ?>" name="<?php echo $this->get_field_name( 'img_size' ); ?>">
+		<p><label for="<?php echo esc_attr($this->get_field_id( 'img_size' )); ?>"><?php _e( 'Image Pick:', 'rss-feed-widget' ); ?></label>
+		 <select id="<?php echo esc_attr($this->get_field_id( 'img_size' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'img_size' )); ?>">
         	<option value="small" <?php echo $img_size=='small'?'selected="selected"':''; ?>>Default</option>
             <option value="1" <?php echo $img_size==1?'selected="selected"':''; ?>>First Image</option>
            	<option value="2" <?php echo $img_size==2?'selected="selected"':''; ?>>Second Image</option>
@@ -1120,8 +1120,8 @@ e.g. 400px<br />
         </select>        
        </p>
                 
-        <p><label for="<?php echo $this->get_field_id( 'rfw_cache' ); ?>"><?php _e( 'Cache Period:', 'rss-feed-widget' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'rfw_cache' ); ?>" name="<?php echo $this->get_field_name( 'rfw_cache' ); ?>" type="number" min="0" value="<?php echo sanitize_text_field($rfw_cache); ?>" placeholder="<?php _e('Enter in seconds', 'rss-feed-widget'); ?>" size="20" /><small><br />
+        <p><label for="<?php echo esc_attr($this->get_field_id( 'rfw_cache' )); ?>"><?php _e( 'Cache Period:', 'rss-feed-widget' ); ?></label>
+		<input id="<?php echo esc_attr($this->get_field_id( 'rfw_cache' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'rfw_cache' )); ?>" type="number" min="0" value="<?php echo esc_attr(sanitize_text_field($rfw_cache)); ?>" placeholder="<?php _e('Enter in seconds', 'rss-feed-widget'); ?>" size="20" /><small><br />
 e.g. 7200 seconds = 2 hours<br />
         <?php _e( 'Leave empty or 0 for no cache.', 'rss-feed-widget'); ?></small>
         </p>
@@ -1131,13 +1131,13 @@ e.g. 7200 seconds = 2 hours<br />
         
         <strong><?php _e('Censorship', 'rss-feed-widget'); ?></strong>        
         
-        <p><textarea id="<?php echo $this->get_field_id( 'rfw_censorship' ); ?>" name="<?php echo $this->get_field_name( 'rfw_censorship' ); ?>" placeholder="Enter the words or just initials which you don't want to display from the feeds. Separate them with commas."><?php echo sanitize_textarea_field($rfw_censorship); ?></textarea><br /><small>Examples: Hate, Harassment or harrass only as initials.</small></p>
+        <p><textarea id="<?php echo esc_attr($this->get_field_id( 'rfw_censorship' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'rfw_censorship' )); ?>" placeholder="Enter the words or just initials which you don't want to display from the feeds. Separate them with commas."><?php echo esc_attr(sanitize_textarea_field($rfw_censorship)); ?></textarea><br /><small>Examples: Hate, Harassment or harrass only as initials.</small></p>
         </div>
         
         <div class="rwf-styling rwf-collapsed">
          <strong><?php _e('Styling', 'rss-feed-widget'); ?></strong>
          <p>
-        <a class="rwf-styling-link" title="<?php echo $tip; ?>" href="<?php echo $url; ?>" target="_blank"><?php echo $tip; ?></a></p>
+        <a class="rwf-styling-link" title="<?php echo esc_attr($tip); ?>" href="<?php echo esc_url($url); ?>" target="_blank"><?php echo esc_attr($tip); ?></a></p>
         </div>
 
 		<?php 

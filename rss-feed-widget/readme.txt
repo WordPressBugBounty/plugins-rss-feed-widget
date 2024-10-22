@@ -4,7 +4,7 @@ Tags: rss, feed widget, social feed, custom feed, chameleon
 Requires at least: 3.0
 Tested up to: 6.6
 Requires PHP: 5.6
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 Requires PHP: 7.0
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -97,6 +97,8 @@ Method-B:
 [RSS Feed Widget Quick Start]: http://androidbubble.com/blog/wordpress/widgets/rss-feed-widget
 
 == Changelog ==
+= 3.0.1 =
+* Fix: The plugin does not escape the $_SERVER['REQUEST_URI'] parameter before outputting it back in an attribute, which could lead to Reflected Cross-Site Scripting in old web browsers. [22/10/2024][Thanks to Peter Thaleikis, Tiffany Tyson | Wordfence, Bob | Jetpack | Akismet | WPScan]
 = 3.0.0 =
 * Fix: Vulnerability reported is stored cross-site scripting (XSS) vulnerability in a shortcode. We consider it a Medium Risk as it is exploitable by Contributors and above. [17/10/2024][Thanks to Peter Thaleikis, Tiffany Tyson | Wordfence, Bob | Jetpack | Akismet | WPScan]
 = 2.9.9 =
@@ -239,6 +241,8 @@ Method-B:
 * Few layout improvements.
 
 == Upgrade Notice ==
+= 3.0.1 =
+Fix: The plugin does not escape the $_SERVER['REQUEST_URI'] parameter before outputting it back in an attribute, which could lead to Reflected Cross-Site Scripting in old web browsers.
 = 3.0.0 =
 Fix: Vulnerability reported is stored cross-site scripting (XSS) vulnerability in a shortcode. We consider it a Medium Risk as it is exploitable by Contributors and above.
 = 2.9.9 =

@@ -64,7 +64,7 @@
         <div class="modal-dialog" role="document" style="max-width: 50px;">
             <div class="modal-content" style="margin-top: 45vh; width: max-content">
 
-                <img src="<?php echo  $rfw_url ?>images/loader.gif" style="width: 50px; height: 50px"/>
+                <img src="<?php echo esc_url($rfw_url.'images/loader.gif'); ?>" style="width: 50px; height: 50px"/>
 
             </div>
         </div>
@@ -413,7 +413,7 @@
             	<div class="alert alert-secondary fade in alert-dismissible show">
                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true" style="font-size:20px">×</span>
-                  </button>    <strong><?php _e("Alert!", 'rss-feed-widget'); ?></strong> <?php _e("Shortcodes will work in premium version only.", 'rss-feed-widget'); ?> <a class="btn btn-warning btn-sm float-right" href="<?php echo $rfw_premium_link; ?>" target="_blank" title="<?php _e('Click here for Premium Version', 'rss-feed-widget'); ?>"><?php _e("Click here to get the premium version.", 'rss-feed-widget'); ?></a>
+                  </button>    <strong><?php _e("Alert!", 'rss-feed-widget'); ?></strong> <?php _e("Shortcodes will work in premium version only.", 'rss-feed-widget'); ?> <a class="btn btn-warning btn-sm float-right" href="<?php echo esc_url($rfw_premium_link); ?>" target="_blank" title="<?php _e('Click here for Premium Version', 'rss-feed-widget'); ?>"><?php _e("Click here to get the premium version.", 'rss-feed-widget'); ?></a>
                 </div>
                 <?php endif; ?>
 
@@ -521,7 +521,7 @@
             <ul class="col col-md-12 mt-4">
                 <li class="promotions"></li>
                 <li style="text-align:center;">
-                    <a href="https://wordpress.org/plugins/gulri-slider" style="float: unset;" target="_blank" title="<?php _e('Image Slider', 'rss-feed-widget'); ?>"><img src="<?php echo $rfw_url; ?>images/gslider.gif" /></a>
+                    <a href="https://wordpress.org/plugins/gulri-slider" style="float: unset;" target="_blank" title="<?php _e('Image Slider', 'rss-feed-widget'); ?>"><img src="<?php echo esc_url($rfw_url.'images/gslider.gif'); ?>" /></a>
                 </li>
             </ul>
 
@@ -535,7 +535,7 @@
 
 
 
-<form class="nav-tab-content hide" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+<form class="nav-tab-content hide" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post">
 <input type="hidden" name="rfw_tn" value="<?php echo (isset($_GET['t'])?esc_attr($_GET['t']):'0'); ?>" />
 <?php wp_nonce_field( 'rfw_styles_act', 'rfw_styles' ); ?>
 <table width="100%">
@@ -569,12 +569,12 @@
 						if(!empty($wpc_assets_loaded) && array_key_exists('rfw', $wpc_assets_loaded) && !empty($wpc_assets_loaded['rfw'])){
 							$rfw_style = get_option('rfw_style');
 						?>
-                        <input type="hidden" name="rfw_style" value="<?php echo $rfw_style; ?>" />
+                        <input type="hidden" name="rfw_style" value="<?php echo esc_attr($rfw_style); ?>" />
                         <ul>
                         <?php
 							foreach($wpc_assets_loaded['rfw'] as $name=>$data){
 						?>
-                        	<li <?php echo ($rfw_style==$name?'class="selected"':''); ?> title="<?php echo $name; ?>" data-id="<?php echo $name; ?>"><img src="<?php echo str_replace($wpc_dir, $wpc_url, $data['images']['screenshot']); ?>" alt="<?php echo $name; ?>" /><span><?php echo ucwords($name); ?></span></li>
+                        	<li <?php echo ($rfw_style==$name?'class="selected"':''); ?> title="<?php echo esc_attr($name); ?>" data-id="<?php echo esc_attr($name); ?>"><img src="<?php echo esc_url(str_replace($wpc_dir, $wpc_url, $data['images']['screenshot'])); ?>" alt="<?php echo esc_attr($name); ?>" /><span><?php echo esc_attr(ucwords($name)); ?></span></li>
 								
 						<?php
                             }
@@ -598,12 +598,12 @@
 					<?php
 							}else{
 					?>
-                    		Wow, you have installed <a href="https://downloads.wordpress.org/plugin/chameleon.zip" target="_blank">Chameleon</a> already. <a href="plugins.php?s=chameleon&plugin_status=inactive" target="_blank">Click here</a> to activate styles for <?php echo $rfw_data['Name']; ?>.
+                    		Wow, you have installed <a href="https://downloads.wordpress.org/plugin/chameleon.zip" target="_blank">Chameleon</a> already. <a href="plugins.php?s=chameleon&plugin_status=inactive" target="_blank">Click here</a> to activate styles for <?php echo esc_attr($rfw_data['Name']); ?>.
                     <?php								
 							}
 						}else{
 					?>
-                    		Good news, now you can install <a href="https://downloads.wordpress.org/plugin/chameleon.zip" target="_blank">Chameleon</a> to get awesome styles for for <?php echo $rfw_data['Name']; ?>.
+                    		Good news, now you can install <a href="https://downloads.wordpress.org/plugin/chameleon.zip" target="_blank">Chameleon</a> to get awesome styles for for <?php echo esc_attr($rfw_data['Name']); ?>.
                     <?php								
 						}
 					?>						
@@ -624,7 +624,7 @@
  </form>
 
 
-<form class="nav-tab-content hide" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+<form class="nav-tab-content hide" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post">
 <input type="hidden" name="rfw_tn" value="<?php echo (isset($_GET['t'])?esc_attr($_GET['t']):'0'); ?>" />
 <?php wp_nonce_field( 'rfw_mutes_action', 'rfw_mutes_field' ); ?>
 <table width="100%">
@@ -642,7 +642,7 @@
                 	<td>
                     
                     	
-                    	<textarea name="rfw_mutes" style="width:100%; height:200px"><?php echo $rfw_mutes; ?></textarea>
+                    	<textarea name="rfw_mutes" style="width:100%; height:200px"><?php echo esc_attr($rfw_mutes); ?></textarea>
                         <br />
 						<p><?php _e('Enter text/words/sentences which you want to filter or mute. One per line.', 'rss-feed-widget'); ?></p>
                     
@@ -666,7 +666,7 @@
 </form>
 
 
-<form class="nav-tab-content hide" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+<form class="nav-tab-content hide" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post">
 <input type="hidden" name="rfw_tn" value="<?php echo (isset($_GET['t'])?esc_attr($_GET['t']):'0'); ?>" />
 <?php wp_nonce_field( 'rfw_settings_action', 'rfw_settings_field' ); ?>
 <table width="100%">
@@ -697,7 +697,7 @@
 
 							<li><?php _e("That's it.", 'rss-feed-widget'); ?></li>
                             
-                            <li>If you still have any query visit my <a href="<?php echo $rfw_data['PluginURI']; ?>" target="_blank">website</a> and contact me.</li>
+                            <li>If you still have any query visit my <a href="<?php echo esc_url($rfw_data['PluginURI']); ?>" target="_blank">website</a> and contact me.</li>
                             
                         </ol>
                         
@@ -715,7 +715,7 @@
                         <?php $image_sizes = get_intermediate_image_sizes(); ?>
                         <select name="rfw_rss_image_size">
                           <?php foreach ($image_sizes as $size_name => $size_attrs): //var_dump($size_attrs);?>
-                            <option value="<?php echo $size_attrs ?>" <?php echo $rfw_rss_image_size == $size_attrs?'selected="selected"':''; ?>><?php echo ucwords(str_replace(array('-','_'),' ',$size_attrs)); ?></option>                    
+                            <option value="<?php echo esc_attr($size_attrs); ?>" <?php echo $rfw_rss_image_size == $size_attrs?'selected="selected"':''; ?>><?php echo esc_attr(ucwords(str_replace(array('-','_'),' ',$size_attrs))); ?></option>                    
                           <?php endforeach; ?>
                           <option value="full" <?php echo $rfw_rss_image_size == 'full'?'selected="selected"':''; ?>><?php _e('Full Size', 'rss-feed-widget'); ?></option>
                         </select>
@@ -731,7 +731,7 @@
             </table><br />
 <br />
 
-            <p><?php echo $rfw_data['Description']; ?></p>
+            <p><?php echo esc_attr($rfw_data['Description']); ?></p>
         <br />
 
             
@@ -748,7 +748,7 @@
 
 
 
-<form class="nav-tab-content hide" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+<form class="nav-tab-content hide" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post">
 <input type="hidden" name="rfw_tn" value="<?php echo (isset($_GET['t'])?esc_attr($_GET['t']):'0'); ?>" />
 <?php wp_nonce_field( 'rfw_sc_action', 'rfw_sc_field' ); ?>
 <table width="100%">
@@ -764,14 +764,14 @@
                 <tbody>
                 <tr>
                 	<td>
-                    	<input style="width:300px;" type="text" name="rfw_sc_google_api_key" value="<?php echo $rfw_sc_google_api_key; ?>" placeholder="<?php _e('Google API Key', 'rss-feed-widget'); ?>" /> (<?php _e('Google API Key', 'rss-feed-widget'); ?> - <small><?php _e('Required to fetch videos list from the youtube using Google API', 'rss-feed-widget'); ?></small>)
+                    	<input style="width:300px;" type="text" name="rfw_sc_google_api_key" value="<?php echo esc_attr($rfw_sc_google_api_key); ?>" placeholder="<?php _e('Google API Key', 'rss-feed-widget'); ?>" /> (<?php _e('Google API Key', 'rss-feed-widget'); ?> - <small><?php _e('Required to fetch videos list from the youtube using Google API', 'rss-feed-widget'); ?></small>)
                     </td>
 				</tr>                    
                 <tr>
                 	<td>
                    
                     	
-                    	<textarea name="rfw_sc_ids" style="width:100%; height:200px"><?php echo $rfw_sc_ids; ?></textarea>
+                    	<textarea name="rfw_sc_ids" style="width:100%; height:200px"><?php echo esc_attr($rfw_sc_ids); ?></textarea>
                         <br />
 						<p><?php _e('Enter Youtube Video/Channel URL or ID', 'rss-feed-widget'); ?>. <?php _e('One per line', 'rss-feed-widget'); ?>.</p>
                     
@@ -795,7 +795,7 @@
 </form>
 
 
-<form class="nav-tab-content hide" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+<form class="nav-tab-content hide" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post">
 <input type="hidden" name="rfw_tn" value="<?php echo (isset($_GET['t'])?esc_attr($_GET['t']):'0'); ?>" />
 <?php wp_nonce_field( 'rfw_settings_action', 'rfw_settings_field' ); ?>
 <table width="100%">
@@ -813,7 +813,7 @@
                 	<td>
                    
                     	
-                    	<textarea name="rfw_custom_tag_patterns" style="width:100%; height:200px"><?php echo get_option('rfw_custom_tag_patterns', ''); ?></textarea>
+                    	<textarea name="rfw_custom_tag_patterns" style="width:100%; height:200px"><?php echo esc_attr(get_option('rfw_custom_tag_patterns', '')); ?></textarea>
                         <br />
 						<p><?php _e('Example:', 'rss-feed-widget'); ?> <strong>$item->data</strong>['<span style="color:blue">child</span>']['<span style="color:red">someCustomTagNode1</span>']['<span style="color:green">someCustomTagNode2</span>'][<span style="color:brown">0</span>]['<span style="color:tomato">someCustomTagFinalNode</span>']</p><br />
                         <p><?php _e('Instructions:', 'rss-feed-widget'); ?><br />
@@ -836,7 +836,7 @@
 						<?php if(!$rfw_pro): ?>
                         <br /><br />
 
-                        <a href="<?php echo $rfw_premium_link; ?>" target="_blank"><?php _e('Click here to get premium version', 'rss-feed-widget'); ?></a>
+                        <a href="<?php echo esc_url($rfw_premium_link); ?>" target="_blank"><?php _e('Click here to get premium version', 'rss-feed-widget'); ?></a>
                         <?php endif; ?>
                     
                         
@@ -861,7 +861,7 @@ jQuery(document).ready(function($) {
 	
 	<?php if(isset($_POST['rfw_tn'])): ?>
 	
-		$('.nav-tab-wrapper .nav-tab:nth-child(<?php echo $_POST['rfw_tn']+1; ?>)').click();
+		$('.nav-tab-wrapper .nav-tab:nth-child(<?php echo esc_attr($_POST['rfw_tn'])+1; ?>)').click();
 	
 	<?php endif; ?>
 
