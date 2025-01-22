@@ -3,7 +3,7 @@
 Plugin Name: RSS Feed Widget	
 Plugin URI: http://androidbubble.com/blog/wordpress/widgets/rss-feed-widget	
 Description: RSS Feed Widget with highly customizable slider. Feed title, description, image, cache and many other things which you can control.	
-Version: 3.0.1
+Version: 3.0.2
 Author: Fahad Mahmood 	
 Author URI: https://www.androidbubbles.com	
 Text Domain: rss-feed-widget
@@ -38,7 +38,7 @@ along with this software. If not, see http://www.gnu.org/licenses/gpl-2.0.html.
 	$rfw_pro_file = $rfw_dir.'/pro/rss_extended.php';
 	//pree($rfw_pro_file);
 	$rfw_pro = file_exists($rfw_pro_file);
-    $rfw_data = get_plugin_data(__FILE__);    
+    $rfw_data = get_plugin_data(__FILE__, true, false);    
 	$rfw_all_plugins = get_plugins();
 	$rfw_activated_plugins = apply_filters( 'active_plugins', get_option( 'active_plugins' ));
 

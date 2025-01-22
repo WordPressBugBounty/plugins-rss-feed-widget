@@ -310,6 +310,8 @@ class rfw_dock extends WP_Widget {
 	
 	public function widget_sub($index=0, $rss_url='', $widget_sub_array=array()){
 		
+		//pree($widget_sub_array);
+		
 		extract($widget_sub_array);
 		
 		$return_array = array('feed_title'=>'', 'html_output'=>'');
@@ -427,7 +429,7 @@ class rfw_dock extends WP_Widget {
 						 	}
 							
 							//pree($atts);exit;
-							//pree($display_type);exit;
+							//pree($display_type);//exit;
 														  
 							switch($display_type){
 								
@@ -712,6 +714,8 @@ class rfw_dock extends WP_Widget {
 							//exit;						
 							//pree($display_type);
 							
+							$feed_post_link = $item->get_permalink();
+							
 							switch($display_type){
 								
 								case 'image_only':						
@@ -747,9 +751,17 @@ class rfw_dock extends WP_Widget {
 								break;		
 			
 								case 'title_only':	
+									//pree($item);
 									$content_str = $item->get_title();
 														
 									//$html_arr[$unique_key][]= $content_str;							
+								break;
+								
+								case 'linked_title':	
+								
+								
+									$content_str = '<p><a target="_blank" href="' . esc_url($feed_post_link) . '" target="_blank">' . esc_html($item->get_title()) . '</a></p>';
+									
 								break;
 								
 								case 'text_only':	

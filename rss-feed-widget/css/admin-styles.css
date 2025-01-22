@@ -344,3 +344,28 @@ div.widget-inside div.widget-content > small{
 	margin: 0px 0 0 0;
 	line-height: 18px;
 }
+li a[href="options-general.php?page=rfw_options"] {
+	color: #917938 !important;
+}
+li a[href="options-general.php?page=rfw_options"]:hover {
+	color: #ffba00 !important;
+}
+div.rfw-settings h2 .premium {
+	background-color: gold;
+	border-radius: 15px;
+	text-decoration: none;
+	padding: 4px 12px;
+	color: #79680e;
+	font-size: 14px;
+}
+div.rfw-settings h2 a.premium{
+	float:right;
+	font-size:14px;
+	padding:10px 30px;
+}
+div.rfw-settings h2 a.premium i{
+	color: #79680e;
+}
+div.rfw-settings h2 a.premium:hover{
+	background-color:#e6d163;
+}

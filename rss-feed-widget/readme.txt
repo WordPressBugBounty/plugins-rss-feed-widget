@@ -2,9 +2,9 @@
 Contributors: fahadmahmood, invoicepress
 Tags: rss, feed widget, social feed, custom feed, chameleon
 Requires at least: 3.0
-Tested up to: 6.6
+Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 Requires PHP: 7.0
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -97,6 +97,8 @@ Method-B:
 [RSS Feed Widget Quick Start]: http://androidbubble.com/blog/wordpress/widgets/rss-feed-widget
 
 == Changelog ==
+= 3.0.2 =
+* New: New attribute type added as content_display="linked_title". [22/01/2025][Thanks to Ben Yates]
 = 3.0.1 =
 * Fix: The plugin does not escape the $_SERVER['REQUEST_URI'] parameter before outputting it back in an attribute, which could lead to Reflected Cross-Site Scripting in old web browsers. [22/10/2024][Thanks to Peter Thaleikis, Tiffany Tyson | Wordfence, Bob | Jetpack | Akismet | WPScan]
 = 3.0.0 =
@@ -241,6 +243,8 @@ Method-B:
 * Few layout improvements.
 
 == Upgrade Notice ==
+= 3.0.2 =
+New: New attribute type added as content_display="linked_title".
 = 3.0.1 =
 Fix: The plugin does not escape the $_SERVER['REQUEST_URI'] parameter before outputting it back in an attribute, which could lead to Reflected Cross-Site Scripting in old web browsers.
 = 3.0.0 =

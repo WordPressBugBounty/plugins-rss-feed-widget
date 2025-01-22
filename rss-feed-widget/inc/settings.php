@@ -42,7 +42,7 @@
 }
 </style>
 <div class="wrap rfw-settings">
-<h2><?php echo $rfw_data['Name'].' ('.$rfw_data['Version'].($rfw_pro?') Pro':')').''; ?> - <?php _e('Settings', 'rss-feed-widget'); ?></h2><br/>
+<h2><?php echo $rfw_data['Name'].' ('.$rfw_data['Version'].($rfw_pro?') <span class="premium">Pro</span>':')').''; ?> - <?php _e('Settings', 'rss-feed-widget'); ?> <?php echo (!$rfw_pro?'':'<a href="'.esc_url($rfw_premium_link).'" target="_blank" class="premium"><i class="fas fa-star"></i> '.__('Go Premium', 'rss-feed-widget').'</a>'); ?></h2><br/>
 
 
 
@@ -55,6 +55,7 @@
     <a class="nav-tab"><?php _e("Image Settings","rss-feed-widget"); ?></a>
     <a class="nav-tab"><?php _e("Youtube Videos","rss-feed-widget"); ?></a>
     <a class="nav-tab"><?php _e("Developer Mode","rss-feed-widget"); ?></a>
+    <a class="nav-tab help_tab" style="float:right"><i class="far fa-question-circle"></i>&nbsp;<?php _e("Help", 'wcdp'); ?></a>
 </h2>
 
 
@@ -232,6 +233,7 @@
                                         <select id="rfw_short_code_content_display" class="form-control" name="rfw_short_code[content_display]">
                                             <option value="default" selected="selected"><?php _e("Default", 'rss-feed-widget'); ?></option>
                                             <option value="title_only"><?php _e("Title Only", 'rss-feed-widget'); ?></option>
+                                            <option value="linked_title"><?php _e("Linked Title", 'rss-feed-widget'); ?></option>
                                             <option value="text_only"><?php _e("Text Only", 'rss-feed-widget'); ?></option>
                                             <option value="image_only"><?php _e("Image Only", 'rss-feed-widget'); ?></option>
                                         </select>
@@ -853,6 +855,19 @@
 </table>
 
 </form>
+
+
+<div class="nav-tab-content help_content hide" data-content="help">
+
+        <div class="row mt-3">
+        	<ul class="position-relative">
+            	<li class="mb-4"><a class="btn btn-sm btn-info" href="https://wordpress.org/support/plugin/rss-feed-widget/" target="_blank"><?php _e('Open a Ticket on Support Forums', 'rss-feed-widget'); ?></a></li>
+                <li class="mb-4"><a class="btn btn-sm btn-warning mr-2" href="http://demo.androidbubble.com/contact/" target="_blank"><?php _e('Contact Developer', 'rss-feed-widget'); ?></a><i class="fas fa-headset"></i></li>
+                <li><iframe width="560" height="315" src="https://www.youtube.com/embed/QCLNXfPOsQo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>
+			</ul>                
+		</div>
+
+    </div>
 
 </div>        
 
