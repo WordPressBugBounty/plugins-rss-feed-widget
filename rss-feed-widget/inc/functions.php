@@ -1578,6 +1578,13 @@ if(!function_exists('rfw_init')){
                             'status' => false,
 
                     );
+					if (!defined('DOING_AJAX') || !DOING_AJAX) {
+						wp_die(__('Invalid request', 'rss-feed-widget'));
+					}
+					
+					if (!current_user_can('manage_options')) {
+						wp_die(__('Insufficient permissions', 'rss-feed-widget'), 403);
+					}
 
                     if ( ! wp_verify_nonce( $nonce, 'rsfw_update_options_nonce_action' ) )
                         die (__("Nonce did not veriy.", 'rss-feed-widget'));

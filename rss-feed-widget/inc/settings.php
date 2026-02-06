@@ -42,7 +42,7 @@
 }
 </style>
 <div class="wrap rfw-settings">
-<h2><?php echo $rfw_data['Name'].' ('.$rfw_data['Version'].($rfw_pro?') <span class="premium">Pro</span>':')').''; ?> - <?php _e('Settings', 'rss-feed-widget'); ?> <?php echo (!$rfw_pro?'':'<a href="'.esc_url($rfw_premium_link).'" target="_blank" class="premium"><i class="fas fa-star"></i> '.__('Go Premium', 'rss-feed-widget').'</a>'); ?></h2><br/>
+<h2><?php echo $rfw_data['Name'].' ('.$rfw_data['Version'].($rfw_pro?') <span class="premium">Pro</span>':')').''; ?> - <?php _e('Settings', 'rss-feed-widget'); ?> <?php echo ($rfw_pro?'':'<a href="'.esc_url($rfw_premium_link).'" target="_blank" class="premium"><i class="fas fa-star"></i> '.__('Go Premium', 'rss-feed-widget').'</a>'); ?></h2><br/>
 
 
 

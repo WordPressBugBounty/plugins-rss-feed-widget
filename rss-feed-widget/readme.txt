@@ -2,9 +2,9 @@
 Contributors: fahadmahmood, invoicepress
 Tags: rss, feed widget, social feed, custom feed, chameleon
 Requires at least: 3.0
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 Requires PHP: 7.0
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
