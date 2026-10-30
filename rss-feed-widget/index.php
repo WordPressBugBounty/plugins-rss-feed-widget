@@ -1,156 +1,55 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+<?php
+/**
+ * Plugin Name:       RSS Feed Widget
+ * Plugin URI:        https://androidbubble.com/blog/wordpress/widgets/rss-feed-widget
+ * Description:       Show any RSS or Atom feed as a clean list or an accessible slider, using a widget, a shortcode or a block. Cached, secure and lightweight.
+ * Version:           4.0.0
+ * Requires at least: 5.8
+ * Requires PHP:      7.4
+ * Author:            Fahad Mahmood
+ * Author URI:        https://www.androidbubbles.com
+ * License:           GPL-2.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:       rss-feed-widget
+ * Domain Path:       /languages
+ *
+ * RSS Feed Widget is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 2 of the License, or any later version.
+ *
+ * @package RSS_Feed_Widget
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+define( 'RFW_VERSION', '4.0.0' );
+define( 'RFW_FILE', __FILE__ );
+define( 'RFW_PATH', plugin_dir_path( __FILE__ ) );
+define( 'RFW_URL', plugin_dir_url( __FILE__ ) );
+
 /*
-Plugin Name: RSS Feed Widget	
-Plugin URI: http://androidbubble.com/blog/wordpress/widgets/rss-feed-widget	
-Description: RSS Feed Widget with highly customizable slider. Feed title, description, image, cache and many other things which you can control.	
-Version: 3.0.3
-Author: Fahad Mahmood 	
-Author URI: https://www.androidbubbles.com	
-Text Domain: rss-feed-widget
-Domain Path: /languages/
-License: GPL2
+ * Plug-and-play Pro: if the /pro directory (with pro-loader.php) exists, the
+ * Pro features switch on. Remove the directory and the free features keep
+ * working on their own. Nothing else in the plugin depends on it.
+ */
+define( 'RFW_PRO_LOADER', RFW_PATH . 'pro/pro-loader.php' );
+define( 'RFW_HAS_PRO', is_readable( RFW_PRO_LOADER ) );
 
-This WordPress Plugin is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-any later version.
- 
-This free software is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
- 
-You should have received a copy of the GNU General Public License
-along with this software. If not, see http://www.gnu.org/licenses/gpl-2.0.html.
-*/ 
+require_once RFW_PATH . 'includes/class-rfw-settings.php';
+require_once RFW_PATH . 'includes/class-rfw-feed.php';
+require_once RFW_PATH . 'includes/class-rfw-renderer.php';
+require_once RFW_PATH . 'includes/class-rfw-widget.php';
+require_once RFW_PATH . 'includes/class-rfw-shortcodes.php';
+require_once RFW_PATH . 'includes/class-rfw-block.php';
+require_once RFW_PATH . 'includes/class-rfw-plugin.php';
 
+if ( RFW_HAS_PRO ) {
+	require_once RFW_PRO_LOADER;
+}
 
-        
-	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-	global $rfw_data, $rfw_all_plugins, $rfw_activated_plugins, $rfw_chameleon_installed, $rfw_chameleon_activated;
-	global $rfw_premium_link, $rfw_pro, $rfw_pro_file, $rfw_url, $rsfw_options;
-	
-	$rfw_premium_link = 'https://shop.androidbubbles.com/product/rss-feed-widget-pro/';//https://shop.androidbubble.com/products/wordpress-plugin?variant=36439508123803';//
-	$rfw_dir = plugin_dir_path( __FILE__ );
-	$rfw_url = plugin_dir_url( __FILE__ );
-    $rsfw_options = get_option('rsfw_options', array());
+RFW_Plugin::init();
 
-	$rfw_pro_file = $rfw_dir.'/pro/rss_extended.php';
-	//pree($rfw_pro_file);
-	$rfw_pro = file_exists($rfw_pro_file);
-    $rfw_data = get_plugin_data(__FILE__, true, false);    
-	$rfw_all_plugins = get_plugins();
-	$rfw_activated_plugins = apply_filters( 'active_plugins', get_option( 'active_plugins' ));
-
-	$rfw_chameleon_installed = (array_key_exists('chameleon/index.php', $rfw_all_plugins)); 
-	$rfw_chameleon_activated = (in_array('chameleon/index.php', $rfw_activated_plugins)); 
-	
-	include('inc/functions.php');
-    
-	
-
-    function register_rfw_scripts() {
-        global $rfw_chameleon_installed, $rfw_chameleon_activated;
-		$rfw_dock = new rfw_dock;
-		$settings = get_option('widget_rfw_dock');
-
-
-		
-		wp_enqueue_script(
-			'rfw-script',
-			plugins_url('js/functions.js', __FILE__),
-			array( 'jquery' ),
-			date('Ymhi'),
-			true
-		);
-		
-		wp_localize_script( 'rfw-script', 'rfw',
-		array( 'speed' => '' ) );
-		
-	
-		
-		wp_enqueue_script(
-			'rfw-script-fitvid',
-			plugins_url('js/jquery.fitvids.js', __FILE__),
-			array( 'jquery' ),
-			date('Ymhi'),
-			true
-		);		
-		
-
-		
-		
-		wp_enqueue_style( 'rfw-style',  plugins_url('css/style.css', (__FILE__)), array(), date('Ymhi'));
-
-		
-		if($rfw_chameleon_installed && $rfw_chameleon_activated && get_option('rfw_style', '')!=''){			
-			global $wpc_assets_loaded, $wpc_dir, $wpc_url;
-			$rfw_style = get_option('rfw_style', '');
-			$css_file = str_replace($wpc_dir, $wpc_url, $wpc_assets_loaded['rfw'][$rfw_style]['styles'][$rfw_style]);
-			wp_enqueue_style( 'rfw-'.$rfw_style.'-style',  $css_file, array(), date('Yha'));
-		}
-		
-	}
-	
-	function admin_rfw_scripts(){
-
-        global $rsfw_options;
-
-
-        if(isset($_GET['page']) && $_GET['page'] == 'rfw_options'){
-            wp_enqueue_style( 'rfw-bs-style',  plugins_url('css/bootstrap.min.css', __FILE__), array(), date('Ymhi'));
-
-            wp_enqueue_script(
-                'rfw-jq-form-scripts',
-                plugins_url('js/jquery.form.min.js', __FILE__),
-                array( 'jquery' )
-            );
-
-            wp_enqueue_script(
-                'rfw-bs-scripts',
-                plugins_url('js/bootstrap.min.js', __FILE__),
-                array( 'jquery' )
-            );
-        }
-
-		
-		wp_enqueue_style( 'rfw-admin-style',  plugins_url('css/admin-styles.css', __FILE__), array(), date('Ymhi'));
-		
-		wp_enqueue_script(
-			'rfw-admin-scripts',
-			plugins_url('js/admin-scripts.js', __FILE__),
-			array( 'jquery' )
-		);	
-		
-		
-		
-		$translation_array = array(
-			'this_url' => admin_url( 'admin.php?page=rfw_options' ),
-			'rfw_tab' => (isset($_GET['t'])?esc_attr($_GET['t']):'0'),
-            'nonce' => wp_create_nonce('rsfw_update_options_nonce_action'),
-            'empty_settings' => empty($rsfw_options),
-            'rfw_short_code_settings' => get_option('rfw_short_code_settings', array()),
-            'del_confirmation' => __('Are you sure, you want to delete this shortcode?', 'rss-feed-widget'),
-            'empty_alert' => __('Please provide all the required fields.', 'rss-feed-widget'),
-		);
-		
-		
-		
-		wp_localize_script( 'rfw-admin-scripts', 'rfw_obj', $translation_array );		
-	}
-
-        
-	add_action( 'wp_enqueue_scripts', 'register_rfw_scripts' );
-	add_action( 'admin_enqueue_scripts', 'admin_rfw_scripts' );
-	add_action( 'widgets_init', 'rfw_init');
-	
-	if(is_admin()){
-		add_action('admin_menu', 'rfw_settings');
-		add_action('admin_init', 'register_rfwsettings');
-		$plugin = plugin_basename(__FILE__); 
-		add_filter("plugin_action_links_$plugin", 'rfw_plugin_links' );	
-	}else{
-		add_filter('the_excerpt_rss', 'rfw_featuredtoRSS');
-		add_filter('the_content_feed', 'rfw_featuredtoRSS');			
-	}
-	
+if ( is_admin() ) {
+	require_once RFW_PATH . 'includes/class-rfw-admin.php';
+	RFW_Admin::init();
+}

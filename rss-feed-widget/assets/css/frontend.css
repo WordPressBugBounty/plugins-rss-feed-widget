@@ -1,0 +1,30 @@
+/* RSS Feed Widget - front end. Inherits your theme's colours and fonts. */
+.rfw-feed{--rfw-speed:500ms;max-width:100%}
+.rfw-feed .rfw-list{list-style:none;margin:0;padding:0}
+.rfw-feed .rfw-item{margin:0 0 1.25em;padding:0;list-style:none}
+.rfw-feed .rfw-item:last-child{margin-bottom:0}
+.rfw-feed .rfw-item-title{font-size:1.05em;line-height:1.3;margin:0 0 .4em}
+.rfw-feed .rfw-item-image{margin:0 0 .6em}
+.rfw-feed .rfw-item-image img{display:block;max-width:100%;height:auto}
+.rfw-feed .rfw-item-meta{font-size:.85em;opacity:.75;margin:0 0 .4em}
+.rfw-feed .rfw-item-text{overflow-wrap:anywhere}
+.rfw-notice{font-size:.9em;padding:.5em .75em;border-left:4px solid #dba617;background:rgba(219,166,23,.12)}
+
+/* Slider: without JavaScript every item simply shows as a list. */
+.rfw-feed.rfw-js.rfw-layout-slider .rfw-item{display:none;margin:0}
+.rfw-feed.rfw-js.rfw-layout-slider .rfw-item.is-active{display:block;animation:rfw-fade var(--rfw-speed) ease}
+@keyframes rfw-fade{from{opacity:0}to{opacity:1}}
+.rfw-pager{display:flex;flex-wrap:wrap;justify-content:center;margin-top:.5em}
+.rfw-dot{position:relative;width:1.5rem;height:1.5rem;padding:0;border:0;background:none;color:inherit;cursor:pointer}
+.rfw-dot::before{content:"";position:absolute;inset:.45rem;border-radius:50%;background:currentColor;opacity:.3;transition:opacity .2s}
+.rfw-dot[aria-current="true"]::before{opacity:.85}
+.rfw-dot:focus-visible{outline:2px solid currentColor;outline-offset:-2px}
+@media (prefers-reduced-motion:reduce){
+	.rfw-feed.rfw-js.rfw-layout-slider .rfw-item.is-active{animation:none}
+}
+
+/* YouTube shortcode */
+.rfw-yt-items iframe{display:block;width:100%;max-width:100%;aspect-ratio:16/9;height:auto;border:0;margin:0 0 1em}
+.rfw-yt-fullscreen header,.rfw-yt-fullscreen footer,.rfw-yt-fullscreen #wpadminbar,.rfw-yt-fullscreen .wp_breadcrumb{display:none!important}
+.rfw-yt-fullscreen{margin-top:0!important}
+.rfw-yt-fullscreen .rfw-yt-items iframe{width:100%;height:100vh;aspect-ratio:auto;margin:0}

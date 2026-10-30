@@ -1,0 +1,8 @@
+.rfw-admin .rfw-version{font-size:12px;font-weight:400;background:#2271b1;color:#fff;border-radius:3px;padding:2px 8px;vertical-align:middle}
+.rfw-admin .rfw-panel{background:#fff;border:1px solid #c3c4c7;border-top:0;padding:8px 20px 20px;max-width:960px}
+.rfw-admin h2{margin-top:1.2em}
+.rfw-admin .rfw-test-ok{border-left:4px solid #00a32a;background:#f0f6f0;padding:8px 12px;margin-top:8px}
+.rfw-admin .rfw-test-bad{border-left:4px solid #d63638;background:#fcf0f1;padding:8px 12px;margin-top:8px}
+.rfw-admin .rfw-test-ok ul{margin:.4em 0 0 1.2em;list-style:disc}
+.rfw-admin .rfw-feature-list{list-style:disc;margin-left:1.4em}
+.rfw-admin .rfw-builder textarea{font-family:Menlo,Consolas,monospace}

@@ -1,404 +1,105 @@
-﻿=== RSS Feed Widget ===
+=== RSS Feed Widget ===
 Contributors: fahadmahmood, invoicepress
-Tags: rss, feed widget, social feed, custom feed, chameleon
-Requires at least: 3.0
-Tested up to: 6.9
-Requires PHP: 5.6
-Stable tag: 3.0.3
-Requires PHP: 7.0
-License: GPL2
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-RSS Feed Widget with customizable slider. Feed title, description, image, censorship and a few other features which you can use.
+Tags: rss, feed, widget, slider, shortcode
+Requires at least: 5.8
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable tag: 4.0.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+Show any RSS or Atom feed as a clean list or accessible slider with a widget, a block or a shortcode. Cached, secure and lightweight.
 
 == Description ==
-* Author: [Fahad Mahmood](https://www.androidbubbles.com/contact)
 
-* Project URI: <http://androidbubble.com/blog/wordpress/widgets/rss-feed-widget>
+RSS Feed Widget turns any RSS or Atom feed into a tidy, fast and accessible block of content on your site. Use it as a **widget**, a **Gutenberg block** or a **shortcode**.
 
-* License: GPL 3. See License below for copyright jots and tittles.
+**Highlights**
 
-RSS Feed Widget is a free WordPress plugin for rss feeds display. It is simple to use as after installation you see a menu item under settings. Easily to get started with this plugin, select image size for your feed and save changes. For more customization, you can install Chameleon and choose desired style. This plugin also provides to filter or mute words/text/sentences etc. To filter any word/text/sentence open filter tab and enter word/text/sentence as one per line.
-You can also choose various image sizes for your feed like thumbnail, medium, large or post thumbnail etc. It also provides the facility of creating shortcode based pages. The shortcode tab describes that how can you create shotcode based pages. The most important and special feature is Advanced Settings. Advanced settings tab allows you to reach custom tag in strange XML based feeds for images.
+* Widget, "RSS Feed" block and `[rfw-feed-widget]` shortcode, all with the same options
+* Layouts: list or slider (a small dependency-free script, keyboard accessible, respects "reduce motion")
+* Show or hide titles, images, text, date and feed name; limit the words shown; open links in a new tab
+* Smart image detection from enclosures, media thumbnails and the item content
+* Sort by feed order, newest, oldest, A-Z, Z-A or random
+* Built-in caching with a "last good copy" fallback if a feed goes down
+* Mute words and phrases site-wide, or hide words per widget
+* Shortcode builder and a feed tester in Settings > RSS Feed Widget
+* `[rfw-youtube-videos]` shortcode for privacy-friendly YouTube embeds (youtube-nocookie.com)
+* No jQuery, no Bootstrap, no tracking, nothing loaded on pages that do not show a feed
 
-Important!
-Visit my blog and suggest good features which you wana see in this plugin.
+**Shortcode example**
 
-[Blog][Wordpress][]: http://androidbubble.com/blog/category/website-development/php-frameworks/wordpress/
+`[rfw-feed-widget rss_url="https://wordpress.org/news/feed/" number="5" list_type="list" show_feed_title="true" keep_feed_link="true" show_date="true"]`
 
-= Tags =
-feed, facebook, youtube, shortcodes, slider, image, widget, page, techcrucnch, news, updates, aggragator, slideshow, feedly
+**Pro (optional add-on)**
 
-How to use shortcodes for content pages?
-[youtube http://www.youtube.com/watch?v=QCLNXfPOsQo]
+Pro is plug and play: copy its `pro` folder into the plugin folder and the extra features switch on. Remove the folder and the free plugin keeps working.
+
+* Combine up to 10 feeds in one widget, merged by date, duplicates removed
+* Include / exclude keyword filters and "only the last N days"
+* Grid and news-ticker layouts
+* Auto-import feed items as posts on a schedule, with a link to the source
+* Custom image tag support for unusual feeds
+
+**External services**
+
+* The feed URLs you enter are fetched by your server (and cached). Nothing is sent to us.
+* The optional YouTube shortcode embeds videos from `youtube-nocookie.com` (Google LLC, [privacy policy](https://policies.google.com/privacy)). If you add a Google API key and a channel ID, your server calls the YouTube Data API (`googleapis.com`) to find the latest videos ([terms](https://developers.google.com/youtube/terms/api-services-terms-of-service)).
 
 == Installation ==
-To use RSS Feed Widget, you will need:
-* 	an installed and configured copy of [WordPress][]
 
-	(version 3.0 or later).
-*	FTP, SFTP or shell access to your web host
+1. Upload the plugin folder to `/wp-content/plugins/`, or install it from the Plugins screen.
+2. Activate it.
+3. Go to Appearance > Widgets, add "RSS Feed Widget" and paste a feed URL. Or add the "RSS Feed" block in the editor. Or use Settings > RSS Feed Widget > Shortcode builder.
 
 == Frequently Asked Questions ==
-= How to get started with RSS Feed Widget? =
-Appearnace > Widgets > Drag and Drop widget into any sidebar to get it displayed on your website.
-Enter RSS Feed URL and Save.
-Select image size which you want to use in your rss feeds. Save Changes. (optional)
 
-= How to customize appearance of rss feed? =
-You can install Chameleon to customize appearance of rss feed.
+= Is it safe to update from 3.x? =
+Yes. Existing widgets and shortcodes keep working: the widget ID, shortcode names and attributes are unchanged. Feed output now uses the active theme's widget wrapper, and the cache is rebuilt after the update.
 
-= Can I change image size of my rss feed? =
-Yes, you can change image size. Open RSS Feed Widget Settings. Select Image Size tab and then select image size as you require.
+= What happened to Facebook Page IDs? =
+Facebook no longer allows reading page posts without your own app credentials, so Page IDs are not supported. Use a feed URL instead.
 
-= Can I create shortcode based pages in this plugin? =
-Yes, in the Settings page select Shortcode tab to create shortcode based pages.
+= A feed does not show. What can I check? =
+Use Settings > RSS Feed Widget > Tools > Test feed. Feeds that point to private or local addresses are blocked on purpose.
 
-= If any RSS Feed is not displaying images but image tags are available? =
-Advanced Settings facilitate you to enter XML tags hierarchy to reach custom tag for images. All instructions are available in Advanced Settings tab which is on RSS Feed Widget Settings page.
+= How long are feeds cached? =
+One hour by default. Change it in Settings > General, or per widget with the "Cache" field. The minimum is 60 seconds.
 
-== Screenshots ==
-1. Shortcode Generator
-2. Settings > Filters Tab
-3. Settings > Image Size Tab
-4. Settings > Shortcodes Tab
-5. Settings > Instructions Tab
-6. Advanced Settings Tab
-7. Chameleon plugin compatibility
-8. Another style implemented with Chameleon
-9. Optional & Advance Settings
-10. Censorship & Styling added
-11. Appearance > Widgets > RSS Feed Widget settings
-12. Output - Multiple Feed URLs
-13. Developer Mode
+= Can I style it? =
+Yes. The markup uses simple classes such as `.rfw-feed`, `.rfw-item`, `.rfw-item-title` and `.rfw-item-text`. The older class names (`rfw-class`, `rfw_dock`, `feed_img`, `text_div`) are kept, so existing custom CSS keeps working.
 
-= New Installations =
-
-Method-A:
-
-1. Go to your wordpress admin "yoursite.com/wp-admin"
-
-2. Login and then access "yoursite.com/wp-admin/plugin-install.php?tab=upload
-
-3. Upload and activate this plugin
-
-4. Now go to admin menu -> appearance -> widgets
-
-5- Drag widget to desired sidebar and save settings
-
-6- Make sure that its working fine for you and don't forget to give your feedback
-
-Method-B:
-
-1.	Download the RSS Feed Widget installation package and extract the files on your computer. 
-2.	Create a new directory named `RSS Feed Widget` in the `wp-content/plugins` directory of your WordPress installation. Use an FTP or SFTP client to upload the contents of your RSS Feed Widget archive to the new directory that you just created on your web host.
-3.	Log in to the WordPress Dashboard and activate the RSS Feed Widget plugin.
-4.	Once the plugin is activated, a new **RSS Feed Widget** will appear in your Wordpress admin -> appearance -> widgets.
-
-[RSS Feed Widget Quick Start]: http://androidbubble.com/blog/wordpress/widgets/rss-feed-widget
+= How do I get Pro? =
+Download the Pro package from the product page and copy its `pro` folder into `wp-content/plugins/rss-feed-widget/`. WordPress.org updates replace the plugin folder, so re-add the `pro` folder (or use the Pro package) after an update.
 
 == Changelog ==
+
+= 4.0.0 =
+* Rebuilt from the ground up for current WordPress (tested with 7.1) and PHP 7.4 to 8.x.
+* Security: removed embedded third-party API tokens; replaced unserialize() of stored data; escaped all output; all feed content is reduced to plain text and cached as plain data; feed fetching uses WordPress' safe HTTP API and blocks private and reserved addresses; admin actions are capability- and nonce-checked; removed the public debug parameters.
+* New: "RSS Feed" Gutenberg block.
+* New: lightweight accessible slider replaces bxSlider; jQuery, Bootstrap and jquery.form are no longer loaded.
+* New: date and feed-name display, "open in new tab" option, autoplay and timing controls.
+* New: shortcode builder, feed tester and cache tools in Settings.
+* New: cached feeds fall back to the last good copy when a feed is down.
+* New: widget now uses the theme's widget wrapper and title markup.
+* Changed: Facebook Page IDs are no longer supported (they relied on embedded tokens).
+* Changed: shortcode default for number of items is 6.
+* New (Pro): plug-and-play "pro" folder with multi-feed, filters, grid and ticker layouts, auto-import to posts and custom image tag.
+
+= 3.0.3 =
+* Maintenance release.
+
 = 3.0.2 =
-* New: New attribute type added as content_display="linked_title". [22/01/2025][Thanks to Ben Yates]
+* New: content_display="linked_title" shortcode option.
+
 = 3.0.1 =
-* Fix: The plugin does not escape the $_SERVER['REQUEST_URI'] parameter before outputting it back in an attribute, which could lead to Reflected Cross-Site Scripting in old web browsers. [22/10/2024][Thanks to Peter Thaleikis, Tiffany Tyson | Wordfence, Bob | Jetpack | Akismet | WPScan]
+* Fix: escape REQUEST_URI to prevent reflected XSS in old browsers.
+
 = 3.0.0 =
-* Fix: Vulnerability reported is stored cross-site scripting (XSS) vulnerability in a shortcode. We consider it a Medium Risk as it is exploitable by Contributors and above. [17/10/2024][Thanks to Peter Thaleikis, Tiffany Tyson | Wordfence, Bob | Jetpack | Akismet | WPScan]
-= 2.9.9 =
-* New: Title only option added in the dropdown. [26/05/2024][Thanks to @todga]
-= 2.9.8 =
-* Fix: Cross Site Scripting (XSS) vulnerability. [17/04/2024][Thanks to Joshua Chan | Patchstack Triage]
-= 2.9.7 =
-* New: Youtube API key field for channel videos list. [10/07/2023][Thanks to Thomas Yau]
-= 2.9.6 =
-* Fix: Widget cache field functionality revised. [13/06/2023][Thanks to Guido]
-= 2.9.5 =
-* Fix: Deprecated: Required parameter $rss_url and Deprecated: Required parameter $widget_sub_array. [03/06/2023][Thanks to Guido]
-= 2.9.4 =
-* Fix: Tab parameter "t" warnings handled. [03/06/2023][Thanks to Guido]
-= 2.9.3 =
-* Fix: Widget breaks sidebar layout. [30/05/2023][Thanks to Guido]
-= 2.9.2 =
-* Warning fixed for the parameter "t" on the settings page. [16/02/2023][Thanks to Alcione Ferreira / ksombrah]
-= 2.9.1 =
-* New features added. [06/05/2022][Thanks to Uchechukwu Agodom]
-= 2.9.0 =
-* Assets updated.
-= 2.8.9 =
-* Styles updated.
-= 2.8.8 =
-* Image size option revised. [Thanks to Toni Arch]
-= 2.8.7 =
-* Text to display option added. [Thanks to Team Ibulb Work & @gnfb]
-= 2.8.6 =
-* Array to string conversion issue fixed for particular feed URL. [Thanks to Team AB]
-= 2.8.5 =
-* Bxslider paths corrected. [Thanks to Team WTB & Team AB]
-= 2.8.4 =
-* New shortcodes features added. [Thanks to Team Ibulb Work & Team GP Themes]
-= 2.8.3 =
-* Click problem for title and images in feeds, resolved for Chrome browser. [Thanks to Francesco Gentile & Team Ibulb Work]
-= 2.8.2 =
-* A few CSS styles improvements regarding widgets area. [Thanks to Francesco Gentile]
-= 2.8.1 =
-* An updated related to XSS vulnerability was reported. [Thanks to WordPress Plugin Review Team]
-= 2.8.0 =
-* An updated related CSS fix.
-= 2.7.9 =
-* Feed title and link related tweaks. [Thanks to Paul from Germany]
-= 2.7.8 =
-= 2.7.7 =
-* Screenshots revnewed, FAQ's and description updated. [Thanks to Team GP Themes]
-= 2.7.6 =
-* Added new features in this version including custom xml tag to get missing feed images. [Thanks to Robert Åberg]
-= 2.7.5 =
-* Fixed the problem related to description and content tag in feeds. [Thanks to CAA]
-= 2.7.4 =
-* Fixed a notice in functions php.  [Thanks to Marionne Patel]
-= 2.7.3 =
-* Fixed a notice in functions php.  [Thanks to liquid32601]
-= 2.7.2 =
-* Enclosure medium check added to handle secure url for images. [Thanks to limone111]
-= 2.7.1 =
-* Added ajax based widget updates. [Thanks to P.C.G. Hazes]
-= 2.7.0 =
-* Improved a few more things regarding variables. [Thanks to Paul Vogel & Grzegorz Turski]
-= 2.6.9 =
-* Reported bugs are fixed. [Thanks to Jason & Paul]
-= 2.6.8 =
-* Multiple feeds related shift to single item revised. [Thanks to Paul Vogel]
-= 2.6.7 =
-* Multiple feeds enabled with feed title display. [Thanks to Peter Hazes]
-= 2.6.6 =
-* Image only option was broken, it has been restored. [Thanks to Jason]
-= 2.6.5 =
-* Multiple feeds introduced as a premium feature. 
-= 2.6.4 =
-* Introduced shortcodes based youtube embedding option.
-= 2.6.3 =
-* Fixed the problem related to xml extensions regarding query parameters. [Thanks to CAA]
-= 2.6.2 =
-* Sort order random option improved. [Thanks to BingoBingo]
-= 2.6.1 =
-* Sort order random option. [Thanks to BingoBingo]
-= 2.6.0 =
-* Cache related issue resolved. [Thanks to Alexis William Cr]
-= 2.5.9 =
-* BX Slider scripts and styling will not load if slider option isn't selected. [Thanks to Beunoit]
-= 2.5.8 =
-* Fixed appearance widget area jQuery selector related DOM refresh issue. [Thanks to Eric SALLES]
-= 2.5.7 =
-* Sanitized input and fixed direct file access issues.
-= 2.5.6 =
-* Fixed a serious vulnerability from sanitizing aspect. [Thanks to robcruiz & Mika Epstein]
-= 2.5.5 =
-* Feeds can be displayed without remote link too. [Thanks to CAA & Olybop]
-= 2.5.4 =
-* Censorship added.
-= 2.5.3 =
-* Fixed: Text extract appended with … even if all text from the feed is displayed.
-= 2.5.2 =
-* Enclosure tag improved. [Thanks to Angela]
-= 2.5.1 =
-* Sort by date provided with a few more improvements. [Thanks to Roeland Klein Haneveld]
-= 2.5.0 =
-* Releasing version 2.5.0 after testing with latest WordPress version 4.8 again.
-= 2.4.9 =
-* Releasing version 2.4.9 after testing with latest WordPress version 4.8.
-= 2.4.8 =
-* A few improvements.
-= 2.4.7 =
-* Filter RSS Feeds option added to settings page. [Thanks to Ronke T]
-= 2.4.6 =
-* HTML cleanup function refined and cache related issue to transient filters resolved so FB can recognize the tags correctly. [Thanks to Emanuele Persiani - ABC-OnLine]
-= 2.4.5 =
-* Enclosure tag refined. [Thanks to Andy Barnes]
-= 2.4.4 =
-* Image pick option added in advance settings. [Thanks to robertschlackman]
-= 2.4.3 =
-* Enclosure tag refined.
-= 2.4.2 =
-* Enclosure tag handled. [Thanks to emotionaltrash]
-= 2.4.1 =
-* Display type added in advance settings section. [Thanks to suikalum]
-= 2.4 =
-* A few new features added.
-= 2.3.3 =
-* Featured images in RSS feeds option provided.
-= 2.3.0 =
-* Adding a few new features.
-= 2.2.3 =
-* Notices and warnings handled and URL field trimmed on submission.
-= 2.2.0 =
-* Facebook App, Page, Group Feeds can be linked as well.
-= 2.1.0 =
-* wp_feed_cache_transient_lifetime feature added.
-= 2.0.1 =
-* krsort() warning handled.
-= 2.0 =
-* A new feature is added to sort feeds Ascending or Descending. [Support Provided to nahanter23]
-* A new feature is added to set widget height. [Support Provided to redtailboas]
-= 1.2 =
-* Pagination has been fixed.
-= 1.1 =
-* Few layout improvements.
+* Fix: stored XSS in a shortcode.
 
 == Upgrade Notice ==
-= 3.0.2 =
-New: New attribute type added as content_display="linked_title".
-= 3.0.1 =
-Fix: The plugin does not escape the $_SERVER['REQUEST_URI'] parameter before outputting it back in an attribute, which could lead to Reflected Cross-Site Scripting in old web browsers.
-= 3.0.0 =
-Fix: Vulnerability reported is stored cross-site scripting (XSS) vulnerability in a shortcode. We consider it a Medium Risk as it is exploitable by Contributors and above.
-= 2.9.9 =
-New: Title only option added in the dropdown.
-= 2.9.8 =
-Fix: Cross Site Scripting (XSS) vulnerability.
-= 2.9.7 =
-New: Youtube API key field for channel videos list.
-= 2.9.6 =
-Fix: Widget cache field functionality revised.
-= 2.9.5 =
-Fix: Deprecated: Required parameter $rss_url and Deprecated: Required parameter $widget_sub_array.
-= 2.9.4 =
-Fix: Tab parameter "t" warnings handled.
-= 2.9.3 =
-Fix: Widget breaks sidebar layout.
-= 2.9.2 =
-Warning fixed for the parameter "t" on the settings page.
-= 2.9.1 =
-New features added.
-= 2.9.0 =
-Assets updated.
-= 2.8.9 =
-Styles updated.
-= 2.8.8 =
-Image size option revised.
-= 2.8.7 =
-Text to display option added.
-= 2.8.6 =
-Array to string conversion issue fixed for particular feed URL.
-= 2.8.5 =
-Bxslider paths corrected.
-= 2.8.4 =
-New shortcodes features added.
-= 2.8.3 =
-Click problem for title and images in feeds, resolved for Chrome browser.
-= 2.8.2 =
-A few CSS styles improvements regarding widgets area.
-= 2.8.1 =
-An updated related to XSS vulnerability was reported. [Thanks to WordPress Plugin Review Team]
-= 2.8.0 =
-An updated related CSS fix.
-= 2.7.9 =
-Feed title and link related tweaks.
-= 2.7.8 =
-= 2.7.7 =
-Screenshots revnewed, FAQ's and description updated.
-= 2.7.6 =
-Added new features in this version including custom xml tag to get missing feed images.
-= 2.7.5 =
-Fixed the problem related to description and content tag in feeds.
-= 2.7.4 =
-Fixed a notice in functions php.
-= 2.7.3 =
-Fixed a notice in functions php.
-= 2.7.2 =
-Enclosure medium check added to handle secure url for images.
-= 2.7.1 =
-Added ajax based widget updates.
-= 2.7.0 =
-Improved a few more things regarding variables.
-= 2.6.9 =
-Reported bugs are fixed.
-= 2.6.8 =
-Multiple feeds related shift to single item revised.
-= 2.6.7 =
-Multiple feeds enabled with feed title display.
-= 2.6.6 =
-Image only option was broken, it has been restored.
-= 2.6.5 =
-Multiple feeds introduced as a premium feature.
-= 2.6.4 =
-Introduced shortcodes based youtube embedding option.
-= 2.6.3 =
-Fixed the problem related to xml extensions regarding query parameters.
-= 2.6.2 =
-Sort order random option improved.
-= 2.6.1 =
-Sort order random option.
-= 2.6.0 =
-Cache related issue resolved.
-= 2.5.9 =
-BX Slider scripts and styling will not load if slider option isn't selected.
-= 2.5.8 =
-Fixed appearance widget area jQuery selector related DOM refresh issue.
-= 2.5.7 =
-Sanitized input and fixed direct file access issues.
-= 2.5.6 =
-Fixed a serious vulnerability from sanitizing aspect.
-= 2.5.5 =
-Feeds can be displayed without remote link too.
-= 2.5.4 =
-Censorship added.
-= 2.5.3 =
-Fixed: Text extract appended with … even if all text from the feed is displayed.
-= 2.5.2 =
-Enclosure tag improved.
-= 2.5.1 =
-Sort by date provided with a few more improvements.
-= 2.5.0 =
-Releasing version 2.5.0 after testing with latest WordPress version 4.8 again.
-= 2.4.9 =
-Releasing version 2.4.9 after testing with latest WordPress version 4.8.
-= 2.4.8 =
-A few improvements.
-= 2.4.7 =
-Filter RSS Feeds option added to settings page.
-= 2.4.6 =
-HTML cleanup function refined and cache related issue to transient filters resolved so FB can recognize the tags correctly.
-= 2.4.5 =
-Enclosure tag refined.
-= 2.4.4 =
-Image pick option added in advance settings.
-= 2.4.3 =
-Enclosure tag refined.
-= 2.4.2 =
-Enclosure tag handled.
-= 2.4.1 =
-Display type added in advance settings section.
-= 2.4 =
-A few new features added.
-= 2.3.3 =
-Featured images in RSS feeds option provided.
-= 2.3.0 =
-Adding a few new features.
-= 2.2.3 =
-Notices and warnings handled and URL field trimmed on submission.
-= 2.2.0 =
-Facebook App, Page, Group Feeds can be linked as well.
-= 2.1.0 =
-wp_feed_cache_transient_lifetime feature added.
-= 2.0.1 =
-krsort() warning handled.
-= 2.0 =
-A new feature is added to sort feeds Ascending or Descending. [Support Provided to nahanter23]
-A new feature is added to set widget height. [Support Provided to redtailboas]
-= 1.2 =
-Pagination has been fixed.
-= 1.1 =
-Few layout improvements.
 
-= Upgrades =
-
-To *upgrade* an existing installation of RSS Feed Widget to the most recent release:
-
-1.	Download the RSS Feed Widget installation package and extract the files on your computer. 
-2.	Upload the new PHP files to `wp-content/plugins/rss-feed-widget`, overwriting any existing RSS Feed Widget files that are there.
-3.	Log in to your WordPress administrative interface immediately in order to see whether there are any further tasks that you need to perform to complete the upgrade.
-
-4.	Enjoy your newer and hotter installation of RSS Feed Widget
-[Widgets]: https://www.androidbubbles.com/extends/wordpress/widgets/
-
-
-== License ==
-This WordPress Plugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or any later version. This free software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this software. If not, see http://www.gnu.org/licenses/gpl-2.0.html.
+= 4.0.0 =
+Major security and compatibility release. Facebook Page IDs are no longer supported. Existing widgets and shortcodes keep working.
